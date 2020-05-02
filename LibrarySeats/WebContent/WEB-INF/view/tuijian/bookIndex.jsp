@@ -21,7 +21,7 @@
 					str += "<img src='"+book.cover+"' style='width:100%;height:100%'>";
 					str += "</div><div style='text-align:left;width:30%;height:138px;float:left;margin-left:21%;margin-top:-138px'>";
 					str += "书名：《"+book.name+"》<br/><br/><br/>作者："+book.author+"<br/><br/><br/>出版社："+book.publish;
-					str += "</div><div style='text-align:left;width:30%;height:138px;float:left;margin-left:52%;margin-top:-138px'>简介：" + book.remarks;
+					str += "</div><div style='text-align:left;width:30%;height:138px;float:left;margin-left:52%;margin-top:-138px;overflow:auto'>简介：" + book.remarks;
 					str += "</div></div><br/>";
 					str += "<div style='width:100%;height:2px;background:blue'></div><br/>";
 				}

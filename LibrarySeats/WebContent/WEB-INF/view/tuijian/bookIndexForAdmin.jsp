@@ -150,7 +150,7 @@
   		<tr>
   			<td>简介</td>
   			<td colspan="4">
-  				<textarea name="remarks" id="remarks"></textarea>
+  				<textarea name="remarks" id="remarks" ></textarea>
   			</td>
   		</tr>
   		
