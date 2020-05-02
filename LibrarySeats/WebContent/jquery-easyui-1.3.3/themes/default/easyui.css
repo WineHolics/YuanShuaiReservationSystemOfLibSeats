@@ -67,7 +67,7 @@
   padding: 11px 0px 10px 30px;
 }
 .panel-noscroll {
-  overflow: hidden;
+  overflow: auto;
 }
 .panel-fit,
 .panel-fit body {
@@ -75,7 +75,7 @@
   margin: 0;
   padding: 0;
   border: 0;
-  overflow: hidden;
+  overflow: auto;
 }
 .panel-loading {
   background: url('images/loading.gif') no-repeat 10px 10px;
@@ -355,7 +355,7 @@
 }
 .layout {
   position: relative;
-  overflow: hidden;
+  overflow: auto;
   margin: 0;
   padding: 0;
   z-index: 0;
