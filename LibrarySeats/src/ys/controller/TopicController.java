@@ -115,7 +115,7 @@ public class TopicController {
 	
 	
 	@RequestMapping("addTopic")
-	public String addTopic(HttpServletRequest request,HttpServletResponse response){
+	public String addTopic(HttpServletRequest request,HttpServletResponse response) {
 		Integer bbsid = Integer.parseInt(request.getParameter("bbsid"));
 		try {
 			String content = request.getParameter("content");

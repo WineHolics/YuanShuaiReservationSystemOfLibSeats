@@ -3,15 +3,13 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-		<title>${title }</title>
-    <script type="text/javascript">
-		
-		
-	</script>
-    </head>
- 
- 
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+<title>${title }</title>
+<script type="text/javascript">	
+	
+</script>
+</head>
 <body style="margin:1px;text-align:center;align:center;width:70%;float:left;margin-left:15%">
 	
 	<div style="height:80px;text-align:center;text:center;line-height:80px">
