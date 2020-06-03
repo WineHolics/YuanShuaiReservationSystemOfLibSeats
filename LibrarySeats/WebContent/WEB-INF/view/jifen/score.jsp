@@ -16,11 +16,12 @@
 	}
 
 	function openIllegalAddDialog() {
-		$("#dlg").dialog("open").dialog("setTitle", "添加违章信息");
+		$("#dlg").dialog("open").dialog("setTitle", "添加违规信息");
 		url = "${path}/illegal/reserveIllegal.htm";
 	}
 
 
+	/* 保存违规记录 */
 	function saveIllegal() {
 		$("#fm").form("submit",
 				{
@@ -50,6 +51,7 @@
 		$("#hiddenStudentno").val(no);
 	}
 
+	/* 删除违规记录 */
 	function deleteIllegal() {
 		var selectedRows = $("#dg2").datagrid('getSelections');
 		if (selectedRows.length == 0) {
@@ -79,7 +81,7 @@
 	}
 	
 	function showDetail(studentno){
-		$("#dlg2").dialog("open").dialog("setTitle", "积分违章详情");
+		$("#dlg2").dialog("open").dialog("setTitle", "积分违规详情");
 		$("#hiddenStudentno").val(studentno);
 		$("#dg2").datagrid({
 			url:'${path}/illegal/illegalList.htm?studentno='+studentno,
@@ -122,14 +124,7 @@
 	<div class="updownInterval"> </div>
 </div>
 
-
-
-
-
-
-
-
-
+<!-- 添加违规信息 -->
 <div id="dlg" class="easyui-dialog" style="width: 520px;height: 320px;padding: 10px 20px"
   closed="true" buttons="#dlg-buttons">
   <form id="fm" method="post">
@@ -155,13 +150,7 @@
 	<a href="javascript:closeIllegalAddDialog()" class="easyui-linkbutton" iconCls="icon-cancel" >关闭</a>
 </div>
 
-
-
-
-
-
-
-<!-- 积分详情 -->
+<!-- 积分违规详情 -->
 <div id="dlg2" class="easyui-dialog" iconCls="icon-search" style="width: 500px;height: 480px;padding: 10px 20px"
   closed="true" buttons="#dlg2-buttons">
   <div class="updownInterval"> </div>
@@ -178,18 +167,11 @@
     		<th field="studentname" width="200" align="center">姓名</th>
     		<th field="time" width="200" align="center">时间</th>
     		<th field="score" width="200" align="center">扣分</th>
-    		<th field="remarks" width="200" align="center">违章</th>
+    		<th field="remarks" width="200" align="center">违规</th>
     	</tr>
     </thead>
 </table>
   </div>
 </div>
-
-
-
-
-
-
-
 </body>
 </html>

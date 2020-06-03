@@ -61,8 +61,6 @@ public class NoticeController {
 		}
 	}
 	
-	
-	
 	@RequestMapping("reserveNotice")
 	public void reserve(HttpServletRequest request,HttpServletResponse response,Notice notice){
 		String id = request.getParameter("id");

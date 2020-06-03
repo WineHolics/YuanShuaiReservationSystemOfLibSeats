@@ -101,7 +101,7 @@
     		<th field="name" width="60" align="center">姓名</th>
     		<th field="phone" width="60" align="center">电话</th>
     		<th field="position" width="60" align="center">职位</th>
-    		<th field="sex" width="60" align="center">姓名</th>
+    		<th field="sex" width="60" align="center">性别</th>
     		<th field="mail" width="60" align="center">邮箱</th>
     	</tr>
     </thead>

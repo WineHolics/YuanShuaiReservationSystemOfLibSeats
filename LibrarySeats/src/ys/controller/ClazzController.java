@@ -54,9 +54,7 @@ public class ClazzController {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
+		
 	@RequestMapping("reserveClazz")
 	public void reserveClazz(HttpServletRequest request,HttpServletResponse response,Clazz clazz) {
 		JSONObject result = new JSONObject();
@@ -75,9 +73,6 @@ public class ClazzController {
 		}
 		WriterUtil.write(response, result.toString());
 	}
-	
-	
-	
 	
 	@RequestMapping("deleteClazz")
 	public void deleteClazz(HttpServletRequest request,HttpServletResponse response){

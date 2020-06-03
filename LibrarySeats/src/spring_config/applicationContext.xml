@@ -30,27 +30,22 @@
        
  </context:component-scan> 
 	
-	<!--<import resource="applicationContext-bean.xml"/>
-
-	--><!-- ============================== 数据库配置 ==================================== -->
-	
-	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
- <property name="locations">
-            <list>
-                <value>classpath*:config.properties</value>
-                </list>
- </property>
+<!-- ============================== 数据库配置 ==================================== -->	
+<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<property name="locations">
+		<list>
+			<value>classpath*:config.properties</value>
+		</list>
+	</property>
 </bean>
 	<!-- 数据源配置 -->
-	<bean name="dataSource"	class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"><value>${DRIVER}</value></property>
 		<property name="url"><value>${URL}</value></property>
 		<property name="username"><value>${USERNAME}</value></property>
 		<property name="password"><value>${PWS}</value></property>
 	</bean>
-	
-	
-	
+		
 	<!-- ================================ MyBatis SqlSession配置 ========================================= -->
 	<!-- 使用SqlSessionFactoryBean工厂产生SqlSession对象，方便后期注入Dao -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

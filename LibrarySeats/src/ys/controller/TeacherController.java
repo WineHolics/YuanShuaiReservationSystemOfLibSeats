@@ -77,22 +77,22 @@ public class TeacherController {
 	
 	@RequestMapping("reserveTeacher")
 	public void reserve(HttpServletRequest request,HttpServletResponse response,Teacher teacher) {
-		JSONObject result = new JSONObject();    // new一个json对象
+		JSONObject result = new JSONObject(); // new一个json对象
 		result.put("success", true);
-		String id = request.getParameter("id");
+		String id = request.getParameter("id"); //获取前台传递的id参数
 		try {
-			if(StringUtil.isNotEmpty(id)){ //不为空，说明是修改操作
+			if(StringUtil.isNotEmpty(id)){ //id不为空，说明是修改教师信息操作
 				teacher.setId(Integer.parseInt(id));
-				teacherService.updateTeacher(teacher);  //调用service的修改方法
-			} else {  //添加操作
+				teacherService.updateTeacher(teacher);  //调用service层的修改方法
+			} else {  //添加教师信息操作
 				teacherService.addTeacher(teacher);
 				//自动注册
 				// 同时自动注册user表
 				user = new User();
 				user.setRoleId(2);             //角色为2表示教师
 				user.setPassword("123456");    //密码
-				user.setUserName(teacher.getNo()); //用户名
-				userService.addUser(user);
+				user.setUserName(teacher.getNo()); //获取教师用户名
+				userService.addUser(user);//保存教师信息到user表
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -120,8 +120,9 @@ public class TeacherController {
 		WriterUtil.write(response, result.toString());
 	}
 	
+	
 
-	@RequestMapping("comboList")
+/*	@RequestMapping("comboList")
 	public void comboList(HttpServletRequest request,HttpServletResponse response){
 		try {
 			List<Teacher> list = teacherService.findTeacher(new Teacher());
@@ -131,5 +132,5 @@ public class TeacherController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 }

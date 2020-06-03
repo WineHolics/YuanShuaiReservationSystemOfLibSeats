@@ -45,7 +45,7 @@
 				$('#s_room').combobox('select', data[0].id);
 			}
 		});
-		//展示座位
+		//显示所有座位
 		searchSeat();
 		//标记自己的座位
 		remarkMyselfseat();

@@ -65,7 +65,7 @@ public class SeatController {
 			if(request.getParameter("roomid")!=null && request.getParameter("roomid").length() > 0){
 				seat.setRoomid(Integer.parseInt(request.getParameter("roomid")));
 			} else {
-				seat.setRoomid(1);
+				seat.setRoomid(3);//默认设置阅览室ID为3，即3号阅览室
 			}
 			String time = request.getParameter("time");
 			if(time == null || time.length()==0){
@@ -206,7 +206,7 @@ public class SeatController {
 			
 			int roomid = Integer.parseInt(keyword.substring(23,24));
 			int needScore = roomService.findScoreByRoomid(roomid);
-			if(needScore >= myScore){
+			if(needScore >= myScore){//信用积分需大于等于阅览室积分门槛才可以在该阅览室选座
 				WriterUtil.write(response, "预约失败！您的信用积分不允许在该阅览室选座");
 				return;
 			}
@@ -255,25 +255,26 @@ public class SeatController {
 	}
 	
 	
+
 	
 	
 	
-	//取消
+	//取消占座
 	@RequestMapping("cancelSeat")
 	public void cancelSeat(HttpServletRequest request,HttpServletResponse response){
 		User currentUser = (User)request.getSession().getAttribute("currentUser");
 		try {
 			// 删除choice表中的记录
 			String keyword = request.getParameter("seatkeyword");
-			System.out.println("keyword========="+keyword);
-			System.out.println("keyword length========="+keyword.length());
-			Choice choice = new Choice();
-			choice.setSeatkeyword(keyword.substring(0, 20));
-			choice.setStudentno(currentUser.getUserName());
-			choiceService.cancelChoice(choice);
+		/*	System.out.println("keyword========="+keyword);
+			System.out.println("keyword length========="+keyword.length());*/
+			Choice choice = new Choice();//创建choice对象
+			choice.setSeatkeyword(keyword.substring(0, 20));//获取选择座位的日期和时间段
+			choice.setStudentno(currentUser.getUserName());//获取当前用户ID
+			choiceService.cancelChoice(choice);//删除choice表中的选座记录
 			
-			// 将seat表中该条记录学号变成1
-			seatService.cancelSeat(keyword); //
+			// 将seat表中该条记录学号变成1，表示该座位无人选择
+			seatService.cancelSeat(keyword); 
 			
 			WriterUtil.write(response, "ok");
 		} catch (Exception e) {

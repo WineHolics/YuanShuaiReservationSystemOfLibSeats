@@ -82,24 +82,24 @@ public class StudentController {
 		JSONObject result = new JSONObject();
 		result.put("success", true);
 		try {
-			if(StringUtil.isNotEmpty(id)){
+			if(StringUtil.isNotEmpty(id)){//若有id参数，则为修改学生信息
 				student.setId(Integer.parseInt(id));
-				studentService.updateStudent(student);
+				studentService.updateStudent(student);//修改学生信息
 			} else {
-				studentService.addStudent(student);
-				// 添加学生的时候同时添加默认的100信用分数
+				studentService.addStudent(student);//添加学生信息
+				// 添加学生的时候同时添加默认的100信用积分
 				score = new Score();
 				score.setStudentname(student.getName());
 				score.setStudentno(student.getNo());
 				score.setTotal(100);
-				scoreService.addScore(score);
+				scoreService.addScore(score);//将新添加的学生积分添加到score表
 				
 				// 同时自动注册user表
 				user = new User();
 				user.setRoleId(3);             //角色为3表示学生
 				user.setPassword("123456");    //密码
 				user.setUserName(student.getNo()); //用户名
-				userService.addUser(user);
+				userService.addUser(user);//在user表中添加新学生
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

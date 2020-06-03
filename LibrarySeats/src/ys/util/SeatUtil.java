@@ -74,7 +74,7 @@ public class SeatUtil {
 	
 
 	
-	// 获取后天日期
+	// 获取明天或后天日期
 	public static Date getNextNextDay(Date date,int day) {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);

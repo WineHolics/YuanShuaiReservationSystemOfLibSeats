@@ -57,7 +57,7 @@
 
 		// 打开新增对话框
 	    function openNoticeAddDialog(){
-	    		$("#dlg").dialog("open").dialog("setTitle","添加文章");
+	    		$("#dlg").dialog("open").dialog("setTitle","添加公告");
 	    		// 清空表单1
 	    		$("#fm").form('clear');
 	    		// 清空富文本框
@@ -75,7 +75,7 @@
 				return;
 			}
 			var row=selectedRows[0];
-			$("#dlg").dialog("open").dialog("setTitle","修改信息");
+			$("#dlg").dialog("open").dialog("setTitle","修改公告信息");
 			$("#fm").form("load",row);
 			ue.setContent(row.content);
 			url="reserveNotice.htm?id="+row.id;
@@ -145,9 +145,9 @@
 <div id="tb" >
 	<div class="updownInterval"> </div>
 	<div>
-		<privilege:operation operationId="100035" clazz="easyui-linkbutton" onClick="openNoticeAddDialog()"       name="添加"              iconCls="icon-add" ></privilege:operation>
-		<privilege:operation operationId="100036" clazz="easyui-linkbutton" onClick="openNoticeUpdateDialog()"   name="修改"      iconCls="icon-edit" ></privilege:operation>
-		<privilege:operation operationId="100037" clazz="easyui-linkbutton" onClick="deleteNotice()"  name="删除"          iconCls="icon-remove" ></privilege:operation>
+		<privilege:operation operationId="100035" clazz="easyui-linkbutton" onClick="openNoticeAddDialog()" name="添加" iconCls="icon-add" ></privilege:operation>
+		<privilege:operation operationId="100036" clazz="easyui-linkbutton" onClick="openNoticeUpdateDialog()" name="修改" iconCls="icon-edit" ></privilege:operation>
+		<privilege:operation operationId="100037" clazz="easyui-linkbutton" onClick="deleteNotice()" name="删除" iconCls="icon-remove" ></privilege:operation>
 	</div>
 	
 	<div class="updownInterval"> </div>
@@ -157,12 +157,12 @@
 
 
 <!-- 新增和修改对话框 -->
-<div id="dlg" class="easyui-dialog" buttons="#dlg-buttons" style="text-align:right;width: 800px;height: 650px;padding: 10px 20px" closed="true" >
+<div id="dlg" class="easyui-dialog" buttons="#dlg-buttons" style="text-align:right;width: 800px;height: 600px;padding: 10px 20px" closed="true" >
  <form id="fm" method="post">
  		<table cellspacing="5px;" styel="text-align:center">
   		<tr>
   			<td >标题</td>
-  			<td><input type="text" class="easyui-textbox" id="title" name="title" style="width:300px;height:35px"/></td>
+  			<td><input type="text" class="easyui-textbox" id="title" name="title" style="width:300px;height:25px"/></td>
   		</tr>
   		<tr>
   			<td>&nbsp;</td>

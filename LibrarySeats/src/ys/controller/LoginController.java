@@ -90,11 +90,10 @@ public class LoginController {
 	// 进入系统主界面
 	@RequestMapping("main")
 	public String toMain(HttpServletRequest request){
-		Object attribute = request.getSession().getAttribute("currentUser");
+		Object attribute = request.getSession().getAttribute("currentUser");//获取当前会话域中的用户信息
 		if(attribute == null){
 			return "redirect:login.htm";
 		}
-		//return "main";
 		return "sys/main";
 	}
 	
@@ -103,10 +102,10 @@ public class LoginController {
 	@RequestMapping("menuTree")
 	public void getMenuTree(HttpServletRequest request,HttpServletResponse response){
 		try {
-			String parentId = request.getParameter("parentId");
-			currentUser = (User) request.getSession().getAttribute("currentUser");
-			role = roleService.findOneRole(currentUser.getRoleId());
-			String[] menuIds = role.getMenuIds().split(",");
+			String parentId = request.getParameter("parentId");//最开始为系统主菜单ID：-1
+			currentUser = (User) request.getSession().getAttribute("currentUser");//获取会话域中的当前用户
+			role = roleService.findOneRole(currentUser.getRoleId());//根据当前用户的角色ID获取角色信息
+			String[] menuIds = role.getMenuIds().split(",");//将数据库role表中该角色可操作的菜单ID存在string数组中
 			map = new HashMap();
 			map.put("parentId",parentId);
 			map.put("menuIds", menuIds);
@@ -123,7 +122,7 @@ public class LoginController {
 		JSONArray jsonArray=this.getMenuByParentId(parentId,menuIds);
 		for(int i=0;i<jsonArray.size();i++){
 			JSONObject jsonObject=jsonArray.getJSONObject(i);
-			if("open".equals(jsonObject.getString("state"))){
+			if("open".equals(jsonObject.getString("state"))){//若没有子菜单，则循环下一条menuId
 				continue;
 			}else{
 				jsonObject.put("children", getMenusByParentId(jsonObject.getString("id"),menuIds));
@@ -147,8 +146,9 @@ public class LoginController {
 			jsonObject.put("iconCls", menu.getIconCls());
 			JSONObject attributeObject = new JSONObject();
 			attributeObject.put("menuUrl", menu.getMenuUrl());
+			//以查询到的主菜单menuId为parentId，判断是否有menuId在menuIds中，若有，则为子菜单
 			if(!hasChildren(menu.getMenuId(), menuIds)){
-				jsonObject.put("state", "open");
+				jsonObject.put("state", "open");//若没有子菜单，则设置state为open
 			}else{
 				jsonObject.put("state", menu.getState());				
 			}

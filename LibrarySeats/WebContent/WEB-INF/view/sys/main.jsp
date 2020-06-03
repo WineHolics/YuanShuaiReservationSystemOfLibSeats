@@ -9,15 +9,15 @@
 	$(function(){
 		// 加载左树菜单
 		$("#tree").tree({
-			lines:true,
-			url:'menuTree.htm?parentId=-1',
+			lines:true,//显示层级菜单之间的连接竖线
+			url:'menuTree.htm?parentId=-1',//-1为系统主菜单的菜单ID，传给控制器-1参数，加载用户菜单
 			onLoadSuccess:function(){
 				$("#tree").tree('expandAll');//展开所有树节点
 			},
 			onClick:function(node){
-				if(node.id==16){
+				if(node.id==16){//菜单ID16为安全退出
 					logout();
-				}else if(node.id==15){
+				}else if(node.id==15){//菜单ID15为修改密码
 					openPasswordUpdateDialog();
 				}else if(node.attributes.menuUrl){
 					openTab(node);
@@ -61,9 +61,9 @@
 			var subtitle = $(this).children(".tabs-title").text();
 			$('#tabs').tabs('close',subtitle);
 		})
-		$(".tabs-inner").bind('contextmenu',function(e){
+		$(".tabs-inner").bind('contextmenu',function(e){ //右键菜单事件
 			
-			$('#mm').menu('show', {
+			$('#mm').menu('show', {//菜单显示位置为鼠标当前点击的横纵坐标，即当前位置
 				left: e.pageX,
 				top: e.pageY
 			});
@@ -189,7 +189,7 @@
 </div>
 
 <div region="center">
-	<div class="easyui-tabs" fit="true" border="false" id="tabs" >
+	<div class="easyui-tabs" fit="true" border="false" id="tabs" ><!-- fit为true时，设置布局的尺寸适应父容器 -->
 		<div title="首页" data-options="iconCls:'icon-home'">
 			<div align="center" style="padding-top: 100px;"><font color="red" size="10">欢迎使用</font></div>
 		</div>

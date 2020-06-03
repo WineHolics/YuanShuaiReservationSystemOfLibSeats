@@ -15,7 +15,9 @@
 	pageContext.setAttribute("path",path);
 %>
 <!-- CSS -->
+<!-- 引用easyUI默认主题中的easyui.css样式 -->
 <link rel="stylesheet" type="text/css" href="${path }/jquery-easyui-1.3.3/themes/default/easyui.css">
+<!-- 引用easyUI中的图标 -->
 <link rel="stylesheet" type="text/css" href="${path }/jquery-easyui-1.3.3/themes/icon.css">
 <link rel="stylesheet" type="text/css" href="${path }/style/main.css">
 
@@ -83,9 +85,13 @@
 /* end .squaredOne */
 </style>
 
-<!-- JAVASCRIPT -->
+<!-- 引用JavaScript -->
+<!-- 先引入jQuery，再引入easyUI -->
 <script type="text/javascript" src="${path }/jquery-easyui-1.3.3/jquery.min.js"></script>
+
+<!-- 包含了easyUI中的所有类库 -->
 <script type="text/javascript" src="${path }/jquery-easyui-1.3.3/jquery.easyui.min.js"></script>
+
 <script type="text/javascript" src="${path }/jquery-easyui-1.3.3/locale/easyui-lang-zh_CN.js"></script>
 
 <script type="text/javascript" src="${path }/jquery-easyui-1.3.3/kz.js" ></script>

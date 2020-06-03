@@ -10,7 +10,7 @@
 	
 
 	function openStudentAddDialog() {
-		$("#dlg").dialog("open").dialog("setTitle", "添加班级信息");
+		$("#dlg").dialog("open").dialog("setTitle", "添加学生信息");
 		url = "reserveStudent.htm";
 			$("#showImg").attr('src',"");
 	}
@@ -22,7 +22,7 @@
 			return;
 		}
 		var row = selectedRows[0];
-		$("#dlg").dialog("open").dialog("setTitle", "修改班级信息");
+		$("#dlg").dialog("open").dialog("setTitle", "修改学生信息");
 		$("#fm").form("load", row);
 		$("#showImg").attr('src',row.photo);
 		url = "reserveStudent.htm?id=" + row.id;
@@ -31,7 +31,7 @@
 	function saveStudent() {
 		var v = $("#clazzid").combobox('getValue');
 		if(v==null || v.length==0){
-			$.messager.alert('系统提示', '请选择班级');
+			$.messager.alert('系统提示', '请选择学生所属班级');
 			return;
 		}
 		var egetFile=$('#photo');

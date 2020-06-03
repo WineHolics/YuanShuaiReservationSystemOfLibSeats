@@ -3,7 +3,7 @@
 <mapper namespace="ys.dao.ClazzDao">
 	
 	<select id="findClazz" parameterType="clazz" resultType="clazz">
-		select a.id,a.name as name,xueyuan,zhuanye,teacherno,a.teacherno,b.name as teachername  
+		select a.id,a.name as name,xueyuan,zhuanye,a.teacherno,b.no,b.name as teachername  
 		from clazz a left join teacher b on a.teacherno = b.no 
 		<if test="page != null and rows != null" >           
               limit #{page}, #{rows} 
